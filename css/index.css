@@ -250,3 +250,22 @@ a:visited {
   background-color: powderblue;
   opacity: 0.5;
 }
+
+#no-mobile {
+  position: absolute;
+  z-index: 99;
+  height: 140vh;
+  width: 100vw;
+  background-color: white;
+  display: flex;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+}
+
+@media screen and (min-width: 1107px) {
+  #no-mobile {
+    display: none;
+  }
+}
