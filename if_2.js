@@ -1,22 +1,35 @@
 const image = document.querySelector(".if_2__image");
 const image_1 = document.querySelector(".if_2__image_1");
-const imageBox = document.querySelector(".if_2__image-box")
+const btn = document.querySelector(".if_2__btn")
+
 
 const imageClass = image.classList
 const imageClass_1 = image_1.classList
+const btnClass = btn.classList
 
 function handleClick() {
     if (1 in imageClass) {
-        imageClass.remove("display-none")
+        imageClass.remove("none")
     } else {
-        imageClass.add("display-none")
+        imageClass.add("none")
     }
 
     if (1 in imageClass_1) {
-        imageClass_1.remove("display-none")
+        imageClass_1.remove("none")
     } else {
-        imageClass_1.add("display-none")
+        imageClass_1.add("none")
     }
 }
 
-imageBox.addEventListener('click', handleClick)
+function handleButton() {
+    if (1 in btnClass) {
+        btn.innerHTML = "Click to see SEIJR Model"
+        btnClass.remove("clicked")
+    } else {
+        btn.innerHTML = "Click to see SEJR Model"
+        btnClass.add("clicked")
+    }
+}
+
+btn.addEventListener('click', handleClick)
+btn.addEventListener('click', handleButton)
