@@ -165,6 +165,17 @@ a:visited {
   height: 210px;
   width: 280px;
 }
+
+.model_2__image-box {
+  height: 550px;
+  width: 700px;
+}
+
+.model_2__image {
+  height: 100%;
+  width: 100%;
+}
+
 .model_4__image-box {
   height: 300px;
   width: 500px;
