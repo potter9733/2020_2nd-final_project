@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-excel_file = 'c:/mypycode/mers_consum.xlsx'
+excel_file = 'mers_data.xlsx'
 
 df = pd.read_excel(excel_file)
 
@@ -26,10 +26,6 @@ day[20] = '06-09'
 day[30] = '06-19'
 day[40] = '06-29'
 day[49] = '07-08'
-
-'''
-beta_0, beta_1 -> data fitting 필요
-'''
 
 # SSE's Transmission rate
 beta_star_1 = 85/4
@@ -60,11 +56,21 @@ gamma = 1 / 13
 beta_0 = 0.06
 beta_1 = 0.03
 
+def create_SSs():
+    import numpy as np
+    n = np.random.randint(1, 6)
+    arr = [[None]*3 for _ in range(n)]
+    
+    for i in range(n):
+        arr[i][0], arr[i][1], arr[i][2] =  np.random.randint(2, 11), np.random.randint(3, 11), np.random.randint(20, 101)
+        
+    return arr
+
 for i in range(n):
     if i <= 18:
         beta = beta_0
         alpha = alpha_0
-        l1, l2 = 0, 0.1
+        l = 0.1
     else:
         beta = beta_1
         alpha = alpha_1
@@ -80,14 +86,14 @@ for i in range(n):
         Heaviside_function_2 = 0
     
     S.append(S[i] + dt * (
-                            (-beta) * (I[i] + l2 * J[i]) * S[i] / N 
+                            (-beta) * (I[i] + l * J[i]) * S[i] / N 
                           + (-beta_star_1) * Heaviside_function_1
                           + (-beta_star_2) * Heaviside_function_2
                           )
             )
     
     E.append(E[i] + dt * (
-                            (beta) * (I[i] + l2 * J[i]) * S[i] / N 
+                            (beta) * (I[i] + l * J[i]) * S[i] / N 
                           + (beta_star_1) * Heaviside_function_1
                           + (beta_star_2) * Heaviside_function_2
                           - kappa * E[i]
